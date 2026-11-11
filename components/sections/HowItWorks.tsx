@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 interface Step {
   num: string
@@ -30,27 +30,22 @@ const steps: Step[] = [
 
 const HowItWorks = () => {
   return (
-    <div>
-      <h2>Three messages, and you are set</h2>
-      <p>Everything happens inside a Telegram chat you already have open.</p>
+    <div className="flex flex-col gap-2 mt-7">
+      <h2 className="font-fraunces text-3xl">Three messages, and you are set</h2>
+      <p className="font-poppins text-sm">Everything happens inside a Telegram chat you already have open.</p>
 
       <table>
         <tbody>
-          <tr>
-            <td>01</td>
-            <td>Say what happened</td>
-            <td>/expense</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          {steps.map((step) => (
+            <tr key={step.num} className="border-t border-rule border-[]">
+              <td className="font-mono text-sm">{step.num}</td>
+              <td>
+                <h3 className="font-poppins">{step.title}</h3>
+                <p className="font-poppins text-sm">{step.desc}</p>
+              </td>
+              <td className="font-mono text-sm">{step.example}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
