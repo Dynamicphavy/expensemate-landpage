@@ -1,30 +1,48 @@
-import type { Metadata } from "next";
-import { Fraunces, Poppins, JetBrains_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Fraunces, Public_Sans, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-fraunces"
+  weight: ["400", "500", "600"],
+  variable: "--font-fraunces",
 });
-const poppins = Poppins({
-  variable: "--font-poppins",
+
+const publicSans = Public_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-})
-const jetbrains = JetBrains_Mono({
+  weight: ["400", "500", "600"],
+  variable: "--font-public-sans",
+});
+
+const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-mono"
+  weight: ["400", "500"],
+  variable: "--font-plex-mono",
 });
 
 export const metadata: Metadata = {
-  title: "FAVOUR.SYS",
-  description: "Computer Engineering graduate building web, mobile and IoT systems.",
+  title: "ExpenseMate — track money the way you already talk about it",
+  description:
+    "No app to download, no spreadsheet to maintain. Message a Telegram bot the way you'd text a friend — ExpenseMate logs it and keeps your balance one command away.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${poppins.variable} ${jetbrains.variable}`}>
-      <body className="bg-[#171510] text-white">{children}</body>
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${publicSans.variable} ${plexMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
   );
 }

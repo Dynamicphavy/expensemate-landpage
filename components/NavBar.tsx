@@ -1,13 +1,28 @@
-import React from 'react';
-import Link from 'next/link';
+const TELEGRAM_URL = "https://t.me/ExpenseMateBot";
 
 const NavBar = () => {
   return (
-    <nav className="w-full h-[4.375rem] flex justify-between items-center px-[15.625rem]">
-      <h1 className="text-[0.875rem]">ExpenseMate</h1>
-      <Link href="" className="w-[9.375rem] h-[1.875rem] text-[0.875rem] bg-[#161511] border border-[#3a3a3a] flex justify-center items-center hover:bg-[#2F6E52] transition-colors">Open in Telegram</Link>
+    <nav className="flex items-center justify-between pt-7">
+      <div className="flex items-center gap-2 font-mono text-[15px] tracking-[0.02em]">
+        <span
+          aria-hidden="true"
+          className="inline-flex size-[22px] shrink-0 items-center justify-center rounded-[4px] bg-ledger text-[12px] text-white"
+        >
+          🧾
+        </span>
+        ExpenseMate
+      </div>
+
+      <a
+        href={TELEGRAM_URL}
+        target="_blank"
+        rel="noopener"
+        className="rounded-[3px] border border-rule px-[14px] py-2 font-mono text-[13px] whitespace-nowrap no-underline transition-colors duration-150 hover:border-ledger hover:bg-ledger hover:text-white"
+      >
+        Open in Telegram
+      </a>
     </nav>
-  )
-}
+  );
+};
 
 export default NavBar;

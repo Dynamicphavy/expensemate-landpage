@@ -1,7 +1,103 @@
 @import "tailwindcss";
 
+/* ---------- Palette (fixed) ---------- */
+:root {
+  --paper: #efeae0;
+  --paper-raised: #f7f3ea;
+  --ink: #1b1b18;
+  --ledger: #2f6f52;
+  --ledger-deep: #1e4a37;
+  --gold: #c99a3b;
+  --panel-bg: #12241c;
+  --panel-fg: #efeae0;
+
+  /* Semantic, theme-dependent */
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --card-bg: var(--paper-raised);
+  --ink-soft: #5b5648;
+  --rule: #c7bda9;
+  --code-fg: var(--ledger);
+}
+
+/* ---------- Dark theme ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171510;
+    --fg: #efeae0;
+    --card-bg: #221f17;
+    --ink-soft: #b8af9c;
+    --rule: #3a3527;
+    --code-fg: #7fc9a4;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #171510;
+  --fg: #efeae0;
+  --card-bg: #221f17;
+  --ink-soft: #b8af9c;
+  --rule: #3a3527;
+  --code-fg: #7fc9a4;
+}
+
+/* ---------- Tailwind token bridge ---------- */
 @theme inline {
-  --font-fraunces: var(--font-fraunces), Georgia, serif;
-  --font-poppins: var(--font-poppins), sans-serif;
-  --font-mono: var(--font-mono), monospace;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-body: var(--font-public-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: var(--font-plex-mono), "SFMono-Regular", Consolas, monospace;
+
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ledger: var(--ledger);
+  --color-ledger-deep: var(--ledger-deep);
+  --color-gold: var(--gold);
+  --color-panel: var(--panel-bg);
+  --color-panel-fg: var(--panel-fg);
+
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-card: var(--card-bg);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-code: var(--code-fg);
+}
+
+/* ---------- Base ---------- */
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ledger);
+  outline-offset: 2px;
+}
+
+/* ---------- Hero entrance ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.7s ease both;
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

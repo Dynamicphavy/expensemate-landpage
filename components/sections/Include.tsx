@@ -1,4 +1,4 @@
-import React from 'react';
+import SectionHead from "@/components/SectionHead";
 
 interface Included {
   point: string;
@@ -8,7 +8,7 @@ interface Included {
 const includes: Included[] = [
   {
     point: "Natural commands",
-    desc: "No menus to learn -- just /expense, /income, and /balance",
+    desc: "No menus to learn — just /expense, /income, and /balance",
   },
   {
     point: "Private by user",
@@ -22,26 +22,37 @@ const includes: Included[] = [
     point: "Always on",
     desc: "Runs continuously, so it's ready whenever you are",
   },
-]
+];
 
 const Include = () => {
   return (
-    <div className="mt-7">
-      <h2>What's Included</h2>
-      <p>ExpenseMate is small on purpose -- it does a few things and does them reliably.</p>
-      
-      <table>
-        <tbody>
-          {includes.map((include, index) => (
-            <tr key={index} className="border-t border-rule border-[]">
-              <td>{include.point}</td>
-              <td className="font-mono text-sm">{include.desc}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  )
-}
+    <section className="pb-14 md:pb-22">
+      <SectionHead title="What's included">
+        ExpenseMate is small on purpose — it does a few things and does them
+        reliably.
+      </SectionHead>
+
+      <div className="rounded-md border border-rule bg-card px-7 py-1.5">
+        {includes.map((include) => (
+          <div
+            key={include.point}
+            className="flex flex-wrap items-baseline gap-2.5 border-b border-rule py-5 last:border-b-0 md:flex-nowrap"
+          >
+            <span className="font-semibold whitespace-nowrap">
+              {include.point}
+            </span>
+            <span
+              aria-hidden="true"
+              className="hidden h-0 flex-1 -translate-y-[5px] border-b border-dotted border-rule md:block"
+            />
+            <span className="max-w-full text-[0.95rem] text-ink-soft md:max-w-[34ch] md:text-right">
+              {include.desc}
+            </span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default Include;
